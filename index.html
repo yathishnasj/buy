@@ -1,1 +1,134 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>BuySell - Online Marketplace</title>
+<link rel="stylesheet" href="buy.css">
+</head>
+<body>
+<header class="navbar">
+<div class="logo">🛍️ BuySell</div>
+<div class="search">🔍<input type="text" id="searchInput" placeholder="Search products..." onkeyup="searchProducts()"></div>
+<nav>
+<a onclick="showPage('home')">Home</a>
+<a onclick="showPage('orders')">Orders</a>
+<a onclick="showPage('sell')">Sell</a>
+<a onclick="showPage('profile')">Profile</a>
+</nav>
+<button class="cart-button" onclick="showPage('cart')">🛒 Cart <span id="cartCount">0</span></button>
+</header>
+
+<section id="home" class="page active">
+<div class="hero">
+<div>
+<h1>Buy & Sell <span>Anything</span></h1>
+<p>Discover amazing products at the best prices.</p>
+<button onclick="showPage('sell')">Sell Your Product</button>
+</div>
+<div class="hero-image">🛍️📱💻👟</div>
+</div>
+<h2>Categories</h2>
+<div class="categories">
+<div onclick="filterCategory('Electronics')">📱<b>Electronics</b></div>
+<div onclick="filterCategory('Fashion')">👕<b>Fashion</b></div>
+<div onclick="filterCategory('Books')">📚<b>Books</b></div>
+<div onclick="filterCategory('Furniture')">🪑<b>Furniture</b></div>
+<div onclick="filterCategory('Sports')">⚽<b>Sports</b></div>
+<div onclick="filterCategory('Beauty')">💄<b>Beauty</b></div>
+</div>
+<div class="heading">
+<h2>Products</h2>
+<select onchange="filterCategory(this.value)">
+<option value="All">All Products</option>
+<option value="Electronics">Electronics</option>
+<option value="Fashion">Fashion</option>
+<option value="Books">Books</option>
+<option value="Furniture">Furniture</option>
+<option value="Sports">Sports</option>
+<option value="Beauty">Beauty</option>
+</select>
+</div>
+<div id="productContainer" class="product-grid"></div>
+</section>
+
+<section id="cart" class="page">
+<h1>🛒 Shopping Cart</h1>
+<div id="cartItems"></div>
+<div class="cart-summary">
+<h2>Order Summary</h2>
+<p>Subtotal: <span id="subtotal">₹0</span></p>
+<p>Delivery: <span>₹50</span></p>
+<p>Discount: <span id="discount">₹0</span></p>
+<hr>
+<h2>Total: <span id="total">₹0</span></h2>
+<button onclick="showPage('checkout')">Checkout</button>
+</div>
+</section>
+
+<section id="checkout" class="page">
+<h1>Checkout</h1>
+<div class="checkout-box">
+<h2>📍 Delivery Address</h2>
+<textarea id="address" placeholder="Enter your address"></textarea>
+<h2>💳 Payment Method</h2>
+<label><input type="radio" name="payment" value="UPI" checked> UPI</label>
+<label><input type="radio" name="payment" value="Card"> Credit / Debit Card</label>
+<label><input type="radio" name="payment" value="COD"> Cash on Delivery</label>
+<button class="place-order" onclick="placeOrder()">Place Order</button>
+</div>
+</section>
+
+<section id="sell" class="page">
+<h1>🏷️ Sell Your Product</h1>
+<div class="sell-box">
+<label>Product Name</label>
+<input id="sellName" placeholder="Enter product name">
+<label>Price</label>
+<input id="sellPrice" type="number" placeholder="Enter price">
+<label>Category</label>
+<select id="sellCategory">
+<option>Electronics</option>
+<option>Fashion</option>
+<option>Books</option>
+<option>Furniture</option>
+<option>Sports</option>
+<option>Beauty</option>
+</select>
+<label>Description</label>
+<textarea id="sellDescription" placeholder="Describe your product"></textarea>
+<label>Product Image</label>
+<input type="file" id="sellImage" accept="image/*">
+<button onclick="sellProduct()">Publish Product</button>
+</div>
+</section>
+
+<section id="orders" class="page">
+<h1>📦 My Orders</h1>
+<div id="orderList"></div>
+</section>
+
+<section id="profile" class="page">
+<div class="profile">
+<div class="profile-avatar">N</div>
+<h1>Nakshatra</h1>
+<p>@nakshatra</p>
+<p>📍 Erode, Tamil Nadu</p>
+<div class="profile-stats">
+<div><b id="sellingCount">0</b><small>Products Selling</small></div>
+<div><b>12</b><small>Orders</small></div>
+<div><b>4.8 ⭐</b><small>Rating</small></div>
+</div>
+<button>Edit Profile</button>
+</div>
+</section>
+
+<footer>
+<h2>🛍️ BuySell</h2>
+<p>Buy what you love. Sell what you don't need.</p>
+<p>© 2026 BuySell</p>
+</footer>
+<script src="buy.js"></script>
+</body>
+</html>
